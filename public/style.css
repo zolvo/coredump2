@@ -196,9 +196,9 @@ body {
   .burger {
     display: flex;
   }
-  .leftbar {
-    /* background-color: #000; */
-  }
+  /* .leftbar {
+    background-color: #000;
+  } */
   .search {
     width: 100%;
   }
