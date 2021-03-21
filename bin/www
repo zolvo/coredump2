@@ -4,6 +4,7 @@ const { port } = require("../config");
 
 const app = require("../app");
 const db = require("../db/models");
+console.log("*********************: THIS IS THE LOG !!!");
 
 // Check the database connection before starting the app.
 db.sequelize
