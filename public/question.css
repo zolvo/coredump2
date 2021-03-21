@@ -15,7 +15,7 @@
 
 .questionRow1 {
   display: flex;
-  padding-top: 15px;
+  padding-top: 5px;
   padding-left: 15px;
   font-size: 1.5em;
   color: whitesmoke;
@@ -100,5 +100,3 @@
 
 .questionRow3 > .deleteBtn {
 }
-
-
