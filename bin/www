@@ -1,108 +1,110 @@
 #!/usr/bin/env node
 
-// const { port } = require("../config");
-
-// const app = require("../app");
-// const db = require("../db/models");
-// console.log("*********************: THIS IS THE LOG !!!");
-
-// // Check the database connection before starting the app.
-// db.sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log("Database connection success! Sequelize is ready to use...");
-
-//     // Start listening for connections.
-//     app.listen(port, () => console.log(`Listening on port ${port}...`));
-//   })
-//   .catch((err) => {
-//     console.log("Database connection failure.");
-//     console.error(err);
-//   });
-
-// #!/usr/bin/env node
-
-/**
- * Module dependencies.
- */
+const { port } = require("../config");
 
 const app = require("../app");
-const debug = require("debug")("starter:server");
-const http = require("http");
+const db = require("../db/models");
+console.log("*********************: THIS IS THE LOG !!!");
 
-/**
- * Get port from environment and store in Express.
- */
+// Check the database connection before starting the app.
+db.sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Database connection success! Sequelize is ready to use...");
 
-const port = normalizePort(process.env.PORT || "8080");
-app.set("port", port);
+    // Start listening for connections.
+    app.listen(port, () => console.log(`Listening on port ${port}...`));
+  })
+  .catch((err) => {
+    console.log("Database connection failure.");
+    console.error(err);
+  });
 
-/**
- * Create HTTP server.
- */
 
-const server = http.createServer(app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
+// // #!/usr/bin/env node
 
-server.listen(port);
-server.on("error", onError);
-server.on("listening", onListening);
+// /**
+//  * Module dependencies.
+//  */
 
-/**
- * Normalize a port into a number, string, or false.
- */
+// const app = require("../app");
+// const debug = require("debug")("starter:server");
+// const http = require("http");
 
-function normalizePort(val) {
-  const port = parseInt(val, 10);
+// /**
+//  * Get port from environment and store in Express.
+//  */
 
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
+// const port = normalizePort(process.env.PORT || "8080");
+// app.set("port", port);
 
-  if (port >= 0) {
-    // port number
-    return port;
-  }
+// /**
+//  * Create HTTP server.
+//  */
 
-  return false;
-}
+// const server = http.createServer(app);
 
-/**
- * Event listener for HTTP server "error" event.
- */
+// /**
+//  * Listen on provided port, on all network interfaces.
+//  */
 
-function onError(error) {
-  if (error.syscall !== "listen") {
-    throw error;
-  }
+// server.listen(port);
+// server.on("error", onError);
+// server.on("listening", onListening);
 
-  const bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+// /**
+//  * Normalize a port into a number, string, or false.
+//  */
 
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case "EACCES":
-      console.error(bind + " requires elevated privileges");
-      process.exit(1);
-      break;
-    case "EADDRINUSE":
-      console.error(bind + " is already in use");
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-}
+// function normalizePort(val) {
+//   const port = parseInt(val, 10);
 
-/**
- * Event listener for HTTP server "listening" event.
- */
+//   if (isNaN(port)) {
+//     // named pipe
+//     return val;
+//   }
 
-function onListening() {
-  const addr = server.address();
-  const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
-  debug("Listening on " + bind);
-}
+//   if (port >= 0) {
+//     // port number
+//     return port;
+//   }
+
+//   return false;
+// }
+
+// /**
+//  * Event listener for HTTP server "error" event.
+//  */
+
+// function onError(error) {
+//   if (error.syscall !== "listen") {
+//     throw error;
+//   }
+
+//   const bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+
+//   // handle specific listen errors with friendly messages
+//   switch (error.code) {
+//     case "EACCES":
+//       console.error(bind + " requires elevated privileges");
+//       process.exit(1);
+//       break;
+//     case "EADDRINUSE":
+//       console.error(bind + " is already in use");
+//       process.exit(1);
+//       break;
+//     default:
+//       throw error;
+//   }
+// }
+
+// /**
+//  * Event listener for HTTP server "listening" event.
+//  */
+
+// function onListening() {
+//   const addr = server.address();
+//   const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+//   debug("Listening on " + bind);
+// }
